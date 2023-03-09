@@ -1,0 +1,2 @@
+[console_scripts]
+imagent = src.cli.cli:get_file

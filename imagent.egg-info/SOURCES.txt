@@ -1,0 +1,16 @@
+README.md
+pyproject.toml
+setup.py
+imagent.egg-info/PKG-INFO
+imagent.egg-info/SOURCES.txt
+imagent.egg-info/dependency_links.txt
+imagent.egg-info/entry_points.txt
+imagent.egg-info/requires.txt
+imagent.egg-info/top_level.txt
+src/__init__.py
+src/cli/__init__.py
+src/cli/cli.py
+src/files/__init__.py
+src/files/files.py
+src/images/__init__.py
+src/images/images.py
