@@ -30,13 +30,15 @@ class Transformer:
     def init_output_dir(self):
         os.mkdir("thumbnails")
 
-    def make_mobile_thumbnails(self):
+    def make_thumbnail(self, width, height):
+        copy = self.copy_image()
+        resized = self.copy_resize(copy, width, height)
+        self.save_image(
+            resized, f"{self.outdir}{width}x{height}{self.ext}")
+
+    def make_all_thumbnails(self):
         if not os.path.exists(self.outdir):
             self.init_output_dir()
 
         for dim in self.thumbnail_dims:
-            print(self.outdir)
-            copy = self.copy_image()
-            resized = self.copy_resize(copy, dim[0], dim[1])
-            self.save_image(
-                resized, f"{self.outdir}{dim[0]}x{dim[1]}{self.ext}")
+            self.make_thumbnail(dim[0], dim[1])
