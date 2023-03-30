@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from cli import get_input
 from files import FileHandler
 from images import Transformer
