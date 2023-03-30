@@ -1,34 +1,42 @@
 import sys
 
 
-def get_input():
-    parser = InputParser()
-    parser.print()
-    filepath = parser[1]
-    if "-s" in parser.args():
-        parser.set_manual_size()
-    return filepath
-
-
-class InputParser:
+class InputBuilder:
     def __init__(self):
         self.inputs = sys.argv
         self.size = None
+        self.path = None
 
-    def set_manual_size(self):
+    def set_size(self):
         try:
             arg_idx = self.inputs.index("-s")
             value = self.inputs[arg_idx+1]
-            dims = value.split('x')
+            [width, height] = value.split('x')
+            self.size = [int(width), int(height)]
 
-            self.size = [dims[0], dims[2]]
             print(f"Size argument: {self.inputs[arg_idx]}")
             print(f"Size arg value: {value}")
+
+            return self
         except IndexError:
-            print("")
+            print("Index error while parsing args size!")
+
+    def get_path(self):
+        return self.path
+
+    def set_path(self):
+        self.path = self.inputs[1]
+        return self
 
     def print(self):
         print(f"Command line arguments: {self.inputs}")
+        print(f"Size: {self.size}")
+        print(f"Path: {self.path}")
+
+    def build(self):
+        self.set_size()
+        self.set_path()
+        return self
 
     def args(self):
         return self.inputs
