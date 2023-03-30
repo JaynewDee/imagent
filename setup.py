@@ -13,12 +13,6 @@ setup(name='imagent',
           'opencv-python',
 
       ],
-      where='src',
-      entry_points={
-          'console_scripts': [
-              'imagent = src:transform_image',
-          ],
-      },
       packages=find_packages(),
       include_package_data=True,
       keywords=['utility', 'images', 'editing']

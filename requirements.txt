@@ -1,3 +1,5 @@
 # LIST DEPENDENCIES
 click
-cv2
+os
+glob
+PIL
