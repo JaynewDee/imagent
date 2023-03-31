@@ -2,17 +2,24 @@
 
 from cli import InputBuilder
 from files import FileHandler
-from transformer import Transformer
-from style import alert
+from transformer import ImgTransformer
+from style import alert, terminate
 
 
 def main():
-    builder = InputBuilder()
-    parsed = builder.build()
-    parsed.print()
+    try:
+        parsed = InputBuilder().build()
+        path = parsed.get_path()
+
+        transformer = ImgTransformer(path)
+        transformer.make_all_thumbnails()
+    except IndexError:
+        terminate("!!!:::Must provide a size argument:::!!!")
+    except FileNotFoundError:
+        terminate(
+            "!!!:::Couldn't find the image file using the path specified:::!!!")
+
     alert("Writing output to thumbnails folder at this location")
-    transformer = Transformer(parsed.get_path())
-    transformer.make_all_thumbnails()
 
 
 if __name__ == "__main__":

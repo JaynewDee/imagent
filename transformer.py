@@ -4,14 +4,15 @@ from os import path
 import os
 
 
-class Transformer:
+class ImgTransformer:
     # Handles Image Manipulations
 
     def __init__(self, filepath: str):
         self.filepath = filepath
         self.ext = path.splitext(filepath)[1]
         self.outdir = os.getcwd() + os.sep + "thumbnails" + os.sep
-        self.thumbnail_dims = [[96, 96], [72, 72], [48, 48], [36, 36]]
+        self.thumbnail_dims = [[512, 512], [384, 384], [256, 256], [192, 192], [
+            128, 128], [96, 96], [72, 72], [48, 48], [36, 36]]
 
     def open_image(self):
         return Image.open(self.filepath)

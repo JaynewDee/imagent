@@ -1,7 +1,25 @@
 from colorama import Fore, Back, Style
+from sys import exit
+
+
+def eq_pipe():
+    print(Fore.CYAN + f"\n{ '=' * 66}\n")
 
 
 def alert(txt: str):
-    print(Fore.CYAN + f"\n{ '=' * 66}\n")
+    eq_pipe()
     print(Fore.CYAN + "!" + Fore.MAGENTA + txt + Fore.CYAN + "!" + "\n")
-    print(Fore.CYAN, "="*66)
+    eq_pipe()
+
+
+def help():
+    print(Fore.MAGENTA + "\n?:::HELP:::?")
+    print(Fore.CYAN + "Usage: <script> <image_path> [-s <dimensions>]")
+
+
+def terminate(txt):
+    eq_pipe()
+    print(Fore.MAGENTA + txt)
+    eq_pipe()
+    help()
+    exit()
