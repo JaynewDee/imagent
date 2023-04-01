@@ -3,7 +3,7 @@
 from cli import InputBuilder
 from files import FileHandler
 from transformer import ImgTransformer
-from style import alert, terminate
+from errors import alert, terminate
 
 
 def main():

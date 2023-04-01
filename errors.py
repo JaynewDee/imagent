@@ -23,3 +23,8 @@ def terminate(txt):
     eq_pipe()
     help()
     exit()
+
+
+def SingletonError():
+    print("Only one instance of this object may exist at once.")
+    exit(1)

@@ -1,4 +1,5 @@
 import sys
+from errors import SingletonError
 
 
 class InputBuilder:
@@ -23,6 +24,7 @@ class InputBuilder:
                 return self
             except IndexError:
                 print("Index error while parsing args size!")
+                sys.exit(1)
         else:
             return
 
@@ -39,9 +41,13 @@ class InputBuilder:
         print(f"Path: {self.path}")
 
     def build(self):
+        if self.instantiations > 0:
+            raise SingletonError()
+
         self.set_size()
         self.set_path()
 
+        self.instantiations += 1
         return self
 
     def args(self):
